@@ -7,7 +7,7 @@ from config.constants import (
 )
 from services import slack_client
 from services import formatter
-from services.drive_uploader import upload_to_drive
+from services.drive_uploader import upload_folder_to_drive
 
 
 def run_batch(days=1, batch_size=1):
@@ -36,10 +36,11 @@ def run_batch(days=1, batch_size=1):
         formatter.parse_for_rag(RAW_DATA_DIR, FORMATTED_DATA_DIR)
 
         if SAVE_TO_DRIVE:
-            upload_to_drive(RAW_DATA_DIR, GOOGLE_DRIVE_FOLDER_ID)
-            upload_to_drive(FORMATTED_DATA_DIR, GOOGLE_DRIVE_FOLDER_ID)
+            upload_folder_to_drive(RAW_DATA_DIR, GOOGLE_DRIVE_FOLDER_ID)
+            upload_folder_to_drive(FORMATTED_DATA_DIR, GOOGLE_DRIVE_FOLDER_ID)
 
 
 if __name__ == "__main__":
-    # run_batch(days=365, batch_size=30)  # Or batch_size=7 for weekly:
+    # run_batch(days=1, batch_size=1)  # Or batch_size=7 for weekly:
     # formatter.parse_for_rag(RAW_DATA_DIR, FORMATTED_DATA_DIR)
+    upload_folder_to_drive(FORMATTED_DATA_DIR, GOOGLE_DRIVE_FOLDER_ID)
