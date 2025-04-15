@@ -1,7 +1,5 @@
 # slack-scraper-bot
 
-Chatbot that can scrape data from slack and save it in a format useable by RAG
-
 Bot that scrapes messages (including threads) from a Slack channel and saves the conversations in a format optimized for
 Retrieval-Augmented Generation (RAG) pipelines. Optionally, the bot can also upload the data to a specified Google Drive
 folder.
