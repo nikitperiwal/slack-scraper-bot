@@ -1,4 +1,5 @@
 import os
+import argparse
 from datetime import datetime, timedelta
 
 from config.constants import (
@@ -43,4 +44,12 @@ def run_batch(days=1, batch_size=1):
 
 
 if __name__ == "__main__":
-    # run_batch(days=1, batch_size=1)  # Or batch_size=7 for weekly:
+    # Set up argument parsing
+    parser = argparse.ArgumentParser(description="Scrape Slack data for RAG processing.")
+    parser.add_argument('--days', type=int, default=1, help="Number of days to fetch messages for.")
+    parser.add_argument('--batch_size', type=int, default=1, help="Batch size for the fetch.")
+
+    args = parser.parse_args()
+
+    # Run the batch process with provided arguments
+    run_batch(days=args.days, batch_size=args.batch_size)

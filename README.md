@@ -10,6 +10,18 @@ folder.
 - Format messages into a structured format suitable for LLMs
 - Upload raw and formatted data to Google Drive
 
+### Usage
+
+To scrape Slack messages and format them, you can specify the number of days to fetch and the batch size using the command-line arguments:
+
+```bash
+python main.py --days <number_of_days> --batch_size <batch_size>
+```
+Run for the last 1 day with a batch size of 1 day (default behavior)
+```bash
+python main.py
+```
+
 ## Project Structure
 
 ```
