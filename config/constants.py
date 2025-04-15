@@ -7,6 +7,7 @@ load_dotenv()
 SLACK_BOT_TOKEN = os.getenv("SLACK_BOT_TOKEN")
 SLACK_CHANNEL_ID = os.getenv("SLACK_CHANNEL_ID", "")
 GOOGLE_DRIVE_FOLDER_ID = os.getenv("GOOGLE_DRIVE_FOLDER_ID", "")
+GOOGLE_DRIVE_CRED_LINK = os.getenv("GOOGLE_DRIVE_CRED_LINK", "credentials.json")
 
 # Variables related to slack data scraping
 SLACK_CHANNEL_NAME = "#data_platform_support"

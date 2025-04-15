@@ -2,10 +2,12 @@ import os
 from pydrive2.auth import GoogleAuth
 from pydrive2.drive import GoogleDrive
 
+from config.constants import GOOGLE_DRIVE_CRED_LINK
+
 
 def authenticate_drive():
     gauth = GoogleAuth()
-    gauth.LoadCredentialsFile("credentials.json")
+    gauth.LoadCredentialsFile(GOOGLE_DRIVE_CRED_LINK)
 
     if gauth.credentials is None:
         gauth.LocalWebserverAuth()
@@ -14,7 +16,7 @@ def authenticate_drive():
     else:
         gauth.Authorize()
 
-    gauth.SaveCredentialsFile("credentials.json")
+    gauth.SaveCredentialsFile(GOOGLE_DRIVE_CRED_LINK)
     return GoogleDrive(gauth)
 
 
