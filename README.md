@@ -22,9 +22,10 @@ slack-scraper-bot/
 ├── services/
 │   ├── slack_client.py              # Slack API logic
 │   ├── formatter.py                 # Data formatting logic
+│   ├── s3_uploader.py               # Upload logic for S3
 │   └── drive_uploader.py            # Upload logic for Google Drive
 ├── utils/
-│   └── auth.py                      # Google auth logic
+│   └── time_utils.py                # Time related util functions
 ├── main.py                          # Entry point
 ├── .env                             # Secrets and tokens
 ├── .gitignore
@@ -41,6 +42,11 @@ Create a `.env` file in the root directory and define the following:
 | `SLACK_CHANNEL_ID`       | **(Optional)** Channel ID if known; if empty, it will be fetched using the name |
 | `GOOGLE_DRIVE_FOLDER_ID` | **(Required if SAVE_TO_DRIVE=True)** Folder ID to upload files in Google Drive  |
 | `GOOGLE_DRIVE_CRED_LINK` | Path to the Google credentials JSON (defaults to `credentials.json`)            |
+| `AWS_ACCESS_KEY_ID`      | **(Required for S3 integration)** AWS access key for S3 authentication         |
+| `AWS_SECRET_ACCESS_KEY`  | **(Required for S3 integration)** AWS secret key for S3 authentication         |
+| `AWS_REGION`             | **(Required for S3 integration)** AWS region for the S3 bucket                 |
+| `S3_BUCKET_NAME`         | **(Required for S3 integration)** S3 bucket name where files will be uploaded |
+| `S3_PREFIX`              | **(Optional)** Prefix for organizing files in S3 bucket                        |
 
 ### Sample `.env` file
 
@@ -49,6 +55,11 @@ SLACK_BOT_TOKEN=xoxb-your-token-here
 SLACK_CHANNEL_ID=C123456xxxx
 GOOGLE_DRIVE_FOLDER_ID=1ABcdefxxxxxxxx
 GOOGLE_DRIVE_CRED_LINK=credentials.json
+AWS_ACCESS_KEY_ID=your-aws-access-key-id
+AWS_SECRET_ACCESS_KEY=your-aws-secret-access-key
+AWS_REGION=your-aws-region
+S3_BUCKET_NAME=your-s3-bucket-name
+S3_PREFIX=your-s3-prefix
 ```
 
 ## Sample Formatted Data (RAG-ready)
